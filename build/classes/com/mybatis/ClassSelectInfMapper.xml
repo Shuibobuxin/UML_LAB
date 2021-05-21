@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.ClassSelectInfDao">
+	<select id="selectCSIByStudent" parameterType="integer" 
+		resultType="com.po.ClassSelectInf">
+		select * from classselectinf where studentId = #{studentId} and score != -1
+	</select>
+	<select id="selectAllCSI" resultType="com.po.ClassSelectInf">
+		select * from classselectinf
+	</select>
+	<select id="selectStudentCSI" resultType="com.po.ClassSelectInf" parameterType="integer">
+		select * from classselectinf where studentId = #{studentId} and score = -1
+	</select>
+	<select id="selectCSIByCId" parameterType="com.po.Class" 
+		resultType="com.po.ClassSelectInf">
+		select * from classselectinf where classId = #{classId}
+	</select>
+	<insert id="insertCSI" parameterType="com.po.ClassSelectInf">
+		insert into classselectinf (classId,studentId,courseName,score) values(#{classId},#{studentId},#{courseName},-1)
+	</insert>
+	<update id="updateCSI" parameterType="com.po.ClassSelectInf">
+		update classselectinf set score = #{score} where classId = #{classId} and studentId = #{studentId}
+	</update>
+	<delete id="deleteCSI" parameterType="com.po.ClassSelectInf">
+		delete from classselectinf where classId = #{classId} and studentId = #{studentId}
+	</delete>
+</mapper>

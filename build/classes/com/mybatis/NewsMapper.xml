@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.NewsDao">
+	<select id="selectNewsById" parameterType="integer" 
+		resultType="com.po.News">
+		select * from news where newsId = #{newsId}
+	</select>
+	<select id="selectAllNews" resultType="com.po.News">
+		select * from news
+	</select>
+	<insert id="insertNews" parameterType="com.po.News">
+		insert into news (newsId,title,text,publishSign) values(#{newsId},#{title},#{text},#{publishSign})
+	</insert>
+	<update id="updateNews" parameterType="com.po.News">
+		update news set title = #{title},text = #{text},publishSign = #{publishSign} where newsId = #{newsId}
+	</update>
+	<delete id="deleteNews" parameterType="com.po.News">
+		delete from news where newsId = #{newsId}
+	</delete>
+</mapper>

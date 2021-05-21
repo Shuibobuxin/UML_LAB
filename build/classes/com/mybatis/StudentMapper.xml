@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.StudentDao">
+	<select id="selectStudentById" parameterType="Integer" 
+		resultType="com.po.Student">
+		select * from student where studentId = #{studentId}
+	</select>
+	<select id="selectAllStudent" resultType="com.po.Student">
+		select * from student
+	</select>
+	<select id="selectStudentBylSign" resultType="com.po.Student">
+		select * from student where lSign = 1
+	</select>
+	<insert id="insertStudent" parameterType="com.po.Student">
+		insert into student (studentId,password,name,sex,phone,lSign) values(#{studentId},#{password},#{name},#{sex},#{phone},#{lSign})
+	</insert>
+	<update id="updateStudent" parameterType="com.po.Student">
+		update student set name = #{name},phone = #{phone},password = #{password} ,lSign = #{lSign} where studentId = #{studentId}
+	</update>
+</mapper>
